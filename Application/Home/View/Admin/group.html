@@ -1,0 +1,19 @@
+<include file="Public/header" />
+	<div class="rightDiv">
+		<div class="title">
+			<input type="button" id="addGroup" name="addGroup" value="增加会员组" onclick="location.href='groupAdd';" />
+			会员组管理
+		</div>
+		<ul>
+			<volist name="group" id="vo">
+			<li>
+				<a class="delSub" href="javascript: void(0);">删除</a>
+				<a href="groupModify?id={$vo['id']}">更改</a>
+				<span>{$vo['name']}</span>
+				<input type="hidden" class="id" value="{$vo['id']}" />
+				<div class="c"></div>
+			</li>
+			</volist>
+		</ul>
+	</div>
+<include file="Public/footer" />

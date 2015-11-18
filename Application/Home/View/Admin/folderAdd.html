@@ -1,0 +1,9 @@
+<include file="Public/header" />
+	<div class="rightDiv">
+		<label for="name">栏目名称</label>
+		<input type="text" id="name" name="name" value="{$info['name']}" /><br />
+		<input type="hidden" id="parent" name="parent" value="<if condition='isset($parent)'>{$parent}<else />{$info['parent']}</if>" />
+		<if condition="$info['id']"><input type="hidden" id="id" name="id" value="{$info['id']}" /></if>
+		<input type="button" class="button" id="addSub" value="确定" />
+	</div>
+<include file="Public/footer" />

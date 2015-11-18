@@ -1,0 +1,77 @@
+<include file="Public/indexheader" />
+	<div class="container tc-main">
+		<div class="row">
+			<div class="span6 offset3">
+				<h2 class="text-center">修改信息</h2>
+				<form class="form-horizontal J_ajaxForm" action="{$siteInfo['webFolder']}user/register/doregister" method="post">
+
+					<div class="control-group">
+						<label class="control-label" for="input_email">昵称</label>
+						<div class="controls">
+							<input type="text" id="input_nick" name="nick" placeholder="请输入昵称" value="{$info['nick']}" class="span3">
+						</div>
+					</div>
+
+					<div class="control-group">
+						<label class="control-label" for="input_oldpassword">旧密码</label>
+						<div class="controls">
+							<input type="password" id="input_oldpassword" name="oldpassword" placeholder="请输入旧密码" class="span3"><br />（如果不修改密码，请将此三空留空）
+						</div>
+					</div>
+					
+					<div class="control-group">
+						<label class="control-label" for="input_password">密码</label>
+						<div class="controls">
+							<input type="password" id="input_password" name="password" placeholder="请输入密码" class="span3">
+						</div>
+					</div>
+
+					<div class="control-group">
+						<label class="control-label" for="input_repassword">重复密码</label>
+						<div class="controls">
+							<input type="password" id="input_repassword" name="repassword" placeholder="请输入重复密码" class="span3">
+						</div>
+					</div>
+
+					<div class="control-group">
+						<label class="control-label" for="input_repassword"></label>
+						<div class="controls">
+							<button class="btn btn-primary J_ajax_submit_btn" type="button" data-wait="1500">提交</button>
+						</div>
+					</div>
+				</form>
+			</div>
+		</div>
+	<script type="text/javascript">
+	$(document).ready(function(){
+		$('.J_ajax_submit_btn').click(function(){
+			var nick = $.trim($('#input_nick').val());
+			var password = $.trim($('#input_password').val());
+			var verify = $.trim($('#input_verify').val());
+			if(password != ''){
+				if($.trim($('#input_oldpassword').val()) == ''){
+					alert('请输入旧密码');
+					return;
+				}
+			}
+			if(password != $.trim($('#input_repassword').val())){
+				alert('两次输入的密码不一致');
+				return;
+			}
+			$.post('doModify.html', {nick: encodeURIComponent(nick),oldpassword:$.trim($('#input_oldpassword').val()), password: password}, function(data){
+				switch(data){
+					case 'success':
+						alert('修改成功');
+						location.reload();
+						break;
+					case 'badpwd':
+						alert('旧密码错误，请重试');
+						break;
+					default:
+						alert('提交过程发生错误，请联系管理员');
+				}
+			})
+		})		
+	})
+	</script>		
+<include file="Public/indexfooter" />

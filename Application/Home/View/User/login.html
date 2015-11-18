@@ -1,0 +1,99 @@
+<include file="Public/indexheader" />
+
+	<div class="container tc-main">
+		<div class="row">
+			<div class="span6 offset3">
+				<h2 class="text-center">用户登录</h2>
+				<form class="form-horizontal J_ajaxForms" method="post">
+					<div class="control-group">
+						<label class="control-label" for="input_username">账号</label>
+						<div class="controls">
+							<input type="text" id="input_username" name="userid" placeholder="请输入用户名" class="span3">
+						</div>
+					</div>
+
+					<div class="control-group">
+						<label class="control-label" for="input_password">密码</label>
+						<div class="controls">
+							<input type="password" id="input_password" name="password" placeholder="请输入密码" class="span3">
+						</div>
+					</div>
+
+					<div class="control-group">
+						<label class="control-label" for="input_verify">验证码</label>
+						<div class="controls">
+							<input type="text" id="input_verify" name="verify"  placeholder="请输入验证码" class="span3">
+							<img class="verify_img" src="{$siteInfo['webFolder']}code" onclick="this.src='{$siteInfo['webFolder']}code?time='+Math.random();" style="cursor: pointer;" title="点击获取"/>						</div>
+					</div>
+					<div class="control-group">
+						<label class="control-label" for="input_repassword"></label>
+						<div class="controls">
+							<label class="checkbox persistent"><input type="checkbox" name="terms" value="1">我同意
+								<a href="#">网站内容服务条款</a></label>
+						</div>
+					</div>
+
+					<div class="control-group">
+						<label class="control-label" for="input_repassword"></label>
+						<div class="controls">
+							<button class="btn btn-primary J_ajax_submit_btn" type="button">确定</button>
+						</div>
+					</div>
+
+					<div class="control-group">
+						<label class="control-label" for="input_repassword"></label>
+						<div class="controls">
+							<ul class="inline">
+								<li><a href="{$siteInfo['webFolder']}user/reg">现在注册</a></li>
+							</ul>
+						</div>
+					</div>
+				</form>
+			</div>
+		</div>
+
+		<br><br><br>
+<!-- Footer
+      ================================================== -->
+      <hr>
+      
+
+	</div>
+	<script type="text/javascript">
+	$(document).ready(function(){
+		$('.J_ajax_submit_btn').click(function(){
+			var userid = $.trim($('#input_username').val());
+			var password = $.trim($('#input_password').val());
+			var verify = $.trim($('#input_verify').val());
+			if(userid == ''){
+				alert('请输入用户名');
+				return;
+			}
+			if(password == ''){
+				alert('请输入密码');
+				return;
+			}
+			if(verify == ''){
+				alert('请输入验证码');
+				return;
+			}
+			$.post('doLogin.html', {userid: userid, password: password, code: verify}, function(data){
+				switch(data){
+					case 'success':
+						alert('登录成功');
+						location.href = '../index';
+						break;
+					case 'badcode':
+						alert('验证码错误，请重试');
+						break;
+					case 'badpwd':
+						alert('用户名/密码错误，请重试');
+						break;
+					default:
+						alert('提交过程发生错误，请联系管理员');
+				}
+			})
+		})		
+	})
+	</script>
+<include file="Public/indexfooter" />

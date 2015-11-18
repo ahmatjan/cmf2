@@ -1,0 +1,31 @@
+<include file="Public/header" />
+	<div class="rightDiv">
+		<label for="nick">昵称</label>
+		<input type="text" id="nick" name="nick" value="{$info['nick']}" /><br />
+		<label for="truename">真实姓名</label>
+		<input type="text" id="truename" name="truename" value="{$info['truename']}" /><br />
+		<label for="password">修改密码</label>
+		<input type="password" id="password" name="password" />（如果不修改密码，请将此空留空）<br />
+		<label for="confirm">确认密码</label>
+		<input type="password" id="confirm" name="confirm" /><br />
+		<label for="type">会员级别</label>
+		<select id="type" name="type">
+		<volist name="types" id="type">
+			<option value="{$type['id']}" <if condition="$type['id'] eq $info['type']">selected</if>>{$type['name']}</option>
+		</volist>
+		</select><br />
+		<label for="group">所属会员组</label>
+		<select id="group" name="group" multiple="multiple">
+		<volist name="groups" id="group">
+			<option value="{$group['id']}" <?php if(in_array($group['id'], $info['groups'])) echo ' selected';?>>{$group['name']}</option>
+		</volist>
+		</select><br />
+		<input type="hidden" id="id" name="id" value="{$info['id']}" />
+		<input type="button" class="button" id="addSub" value="确定" />
+		<div id="oldGroup">
+		<volist name="info['group']" id="vo">
+		<input type="hidden" value="{$vo['id']}" />
+		</volist>
+		</div>
+	</div>
+<include file="Public/footer" />

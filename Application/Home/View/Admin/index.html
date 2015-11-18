@@ -1,0 +1,60 @@
+<include file="Public/header" />
+<div id="left">
+<div>
+您好，{$userInfo['nick']} <a href="{$siteInfo['webFolder']}user/logout">退出登录</a>
+<ul>
+	<li>
+		<a href="javascript:void(0);">文章管理</a>
+		<ul>
+			<li>
+				<a href="{$siteInfo['webFolder']}admin/article" target="rightFrame">所有文章列表</a>
+			</li>
+			<li>
+				<a href="{$siteInfo['webFolder']}admin/article?adder=1" target="rightFrame">我发布的文章</a>
+			</li>
+			<if condition="$userInfo['type'] gt 1">
+			<li>
+				<a href="{$siteInfo['webFolder']}admin/article?status=1" target="rightFrame">待审核的文章</a>
+			</li>
+			</if>
+		</ul>
+		{$treeStr}
+	</li>
+	<li>
+		<a href="javascript:void(0);">栏目管理</a>
+		<ul>
+			<li>
+				<a href="{$siteInfo['webFolder']}admin/folder" target="rightFrame">网站栏目管理</a>
+			</li>
+		</ul>
+	</li>
+	<li>
+		<a href="javascript:void(0);">会员管理</a>
+		<ul>
+			<li>
+				<a href="{$siteInfo['webFolder']}admin/user" target="rightFrame">注册会员列表</a>
+			</li>
+			<li>
+				<a href="{$siteInfo['webFolder']}admin/group" target="rightFrame">会员组设置</a>
+			</li>
+		</ul>
+	</li>
+	<li>
+		<a href="javascript:void(0);">系统管理</a>
+		<ul>
+			<li>
+				<a href="{$siteInfo['webFolder']}admin/type" target="rightFrame">管理员组管理</a>
+			</li>
+			<li>
+				<a href="{$siteInfo['webFolder']}admin/admin" target="rightFrame">系统用户管理</a>
+			</li>
+		</ul>
+	</li>
+</ul>
+</div>	
+</div>
+<div id="right">
+	<iframe src="{$siteInfo['webFolder']}admin/article" scrolling="none" id="rightFrame" name="rightFrame"></iframe>
+</div>
+
+<include file="Public/footer" />

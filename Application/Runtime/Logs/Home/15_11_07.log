@@ -1,0 +1,80 @@
+[ 2015-11-07T10:56:39+08:00 ] 1.202.78.108 /tour/
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000048s ]
+INFO: [ app_init ] --END-- [ RunTime:0.002139s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.009217s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.009440s ]
+NOTIC: [8] A session had already been started - ignoring session_start() C:\wamp\www\tour\Application\Home\Controller\Base.class.php 第 8 行.
+
+[ 2015-11-07T10:56:39+08:00 ] 1.202.78.108 /tour/User/index.html
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000044s ]
+INFO: [ app_init ] --END-- [ RunTime:0.000664s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.000834s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.001045s ]
+INFO: [ view_parse ] --START--
+INFO: [ template_filter ] --START--
+INFO: Run Behavior\ContentReplaceBehavior [ RunTime:0.000120s ]
+INFO: [ template_filter ] --END-- [ RunTime:0.000372s ]
+NOTIC: [8] Undefined variable: siteInfo C:\wamp\www\tour\Application\Runtime\Cache\Home\6830cbac89ff06451c77cd8769d6d4ca.php 第 5 行.
+INFO: Run Behavior\ParseTemplateBehavior [ RunTime:0.055142s ]
+INFO: [ view_parse ] --END-- [ RunTime:0.055363s ]
+INFO: [ view_filter ] --START--
+INFO: Run Behavior\WriteHtmlCacheBehavior [ RunTime:0.006301s ]
+INFO: [ view_filter ] --END-- [ RunTime:0.006502s ]
+INFO: [ app_end ] --START--
+INFO: Run Behavior\ShowPageTraceBehavior [ RunTime:0.002235s ]
+INFO: [ app_end ] --END-- [ RunTime:0.002445s ]
+
+[ 2015-11-07T10:56:41+08:00 ] 1.202.78.108 /tour/User/login.html
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000062s ]
+INFO: [ app_init ] --END-- [ RunTime:0.000708s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.000819s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.000998s ]
+NOTIC: [8] Undefined index: db_host C:\wamp\www\tour\ThinkPHP\Library\Think\Db.class.php 第 66 行.
+NOTIC: [8] Undefined index: db_name C:\wamp\www\tour\ThinkPHP\Library\Think\Db.class.php 第 68 行.
+SQL: SHOW COLUMNS FROM `dede_member` [ RunTime:0.0025s ]
+SQL: SHOW COLUMNS FROM `dede_member` [ RunTime:0.0019s ]
+SQL: SELECT m.mid,a.usertype,r.type FROM dede_member m JOIN dede_admin a ON m.mid=a.id LEFT JOIN tbl_userright r ON r.mid=m.mid WHERE m.userid = 'admin' AND m.pwd = '21232f297a57a5a743894a0e4a801fc3'  [ RunTime:0.0004s ]
+INFO: [ app_end ] --START--
+INFO: Run Behavior\ShowPageTraceBehavior [ RunTime:0.000819s ]
+INFO: [ app_end ] --END-- [ RunTime:0.000992s ]
+
+[ 2015-11-07T10:56:41+08:00 ] 1.202.78.108 /tour/tour
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000043s ]
+INFO: [ app_init ] --END-- [ RunTime:0.000649s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.000827s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.001037s ]
+ERR: 无法加载控制器:Tour
+
+[ 2015-11-07T10:56:57+08:00 ] 1.202.78.108 /tour/User/login.html
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000044s ]
+INFO: [ app_init ] --END-- [ RunTime:0.000590s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.000714s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.000900s ]
+NOTIC: [8] Undefined index: db_host C:\wamp\www\tour\ThinkPHP\Library\Think\Db.class.php 第 66 行.
+NOTIC: [8] Undefined index: db_name C:\wamp\www\tour\ThinkPHP\Library\Think\Db.class.php 第 68 行.
+SQL: SHOW COLUMNS FROM `dede_member` [ RunTime:0.0022s ]
+SQL: SHOW COLUMNS FROM `dede_member` [ RunTime:0.0017s ]
+SQL: SELECT m.mid,a.usertype,r.type FROM dede_member m JOIN dede_admin a ON m.mid=a.id LEFT JOIN tbl_userright r ON r.mid=m.mid WHERE m.userid = 'admin' AND m.pwd = '21232f297a57a5a743894a0e4a801fc3'  [ RunTime:0.0004s ]
+INFO: [ app_end ] --START--
+INFO: Run Behavior\ShowPageTraceBehavior [ RunTime:0.000786s ]
+INFO: [ app_end ] --END-- [ RunTime:0.000957s ]
+
+[ 2015-11-07T10:56:57+08:00 ] 1.202.78.108 /tour/tour
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000044s ]
+INFO: [ app_init ] --END-- [ RunTime:0.000640s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.000782s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.000991s ]
+ERR: 无法加载控制器:Tour
+

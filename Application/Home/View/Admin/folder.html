@@ -1,0 +1,20 @@
+<include file="Public/header" />
+	<div class="rightDiv">
+		<div class="title">
+			<input type="button" id="addFolder" name="addFolder" value="增加顶级栏目" onclick="location.href='folderAdd';" />
+			网站栏目管理
+		</div>
+		<ul id="tree">
+			<volist name="tree" id="vo">
+			<li>
+				<a class="delSub" href="javascript: void(0);">删除</a>
+				<a href="folderModify?id={$vo['id']}">更改</a>
+				<a href="folderAdd?id={$vo['id']}">增加子类</a>
+				<span>{$vo['name']}</span>
+				<input type="hidden" class="id" value="{$vo['id']}" />
+				<div class="c"></div>
+			</li>
+			</volist>
+		</ul>
+	</div>
+<include file="Public/footer" />

@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+		<title>{$siteInfo['title']}</title>
+		<link rel="stylesheet" type="text/css" href="{$siteInfo['webFolder']}static/css/style.css" />
+<if condition="isset($cssFiles)">
+<volist name="cssFiles" id="file">
+		<link rel="stylesheet" type="text/css" href="{$siteInfo['webFolder']}static/css/{$file}" />
+</volist>
+</if>
+		<script type="text/javascript" src="{$siteInfo['webFolder']}static/js/jquery.min.js"></script>
+		<script type="text/javascript" src="{$siteInfo['webFolder']}static/js/init.js"></script>
+<if condition="isset($jsFiles)">
+<volist name="jsFiles" id="file">
+		<script type="text/javascript" src="{$siteInfo['webFolder']}static/js/{$file}"></script>
+</volist>
+</if>
+	</head>
+	<body>

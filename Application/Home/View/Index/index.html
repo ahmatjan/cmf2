@@ -1,0 +1,26 @@
+<include file="Public/indexheader" />
+<style>
+ul.indexarticle{
+	padding-left: 0px;
+	margin-left: 0;
+}
+ul.indexarticle li{
+	list-style-type: none;
+}
+</style>
+<div class="container">	
+	<div class="row">
+		<volist name="topFolders" id="vo" key="k">
+		<div class="span4">
+			 <h2 class="font-large nospace"><i class="fa fa-bars"></i>{$vo['name']}</h2>
+             <ul class="indexarticle">
+			 <volist name="vo['articles']" id="article">
+			 <li><a href="{$siteInfo['webFolder']}article/article?id={$article['id']}" target="_blank">{$article['title']}</a></li>
+			 </volist>
+			 </ul>
+		</div>
+		<if condition="$k % 3 eq 0"><div style="clear: both; width: 0; height: 0;"></div></if>
+		</volist>
+	</div>
+
+<include file="Public/indexfooter" />

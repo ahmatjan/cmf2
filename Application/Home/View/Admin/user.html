@@ -1,0 +1,27 @@
+<include file="Public/header" />
+	<div class="rightDiv">
+		<div class="title">
+			{$type}管理
+		</div>
+		<table>
+			<tr>
+				<th>用户名</th>
+				<th>昵称</th>
+				<th>级别</th>
+				<th>操作</th>
+			</tr>
+			<volist name="users" id="vo">
+			<tr>
+				<td>&nbsp;{$vo['userid']}</td>
+				<td>&nbsp;{$vo['nick']}</td>
+				<td>&nbsp;<if condition="$vo['type']">{$types[$vo['type']]}<else />普通会员</if></td>
+				<td>&nbsp;
+				<a href="userModify?id={$vo['id']}">更改</a>
+				<a class="delSub" href="javascript: void(0);">删除</a>
+				<input type="hidden" class="id" value="{$vo['id']}" />
+				</td>
+			</tr>
+			</volist>
+		</table>
+	</div>
+<include file="Public/footer" />
