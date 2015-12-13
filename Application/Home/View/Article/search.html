@@ -1,0 +1,34 @@
+<include file="Public/publicheader" />
+
+<div class="p10">
+
+    <div class="pg-opt pin">
+        <div>
+            <h2>{$keyword} 搜索结果</h2>
+        </div>
+    </div>
+    <div class="p10">
+        <div>
+            <div class="">
+                <volist name="articles" id="vo">
+                    <div class="list-boxes">
+                        <h2><a href="article?id={$vo['id']}" target="_blank">{$vo['title']}</a></h2>
+                        <p>{$vo['contract']}...</p>
+                        <div>
+                            <div class="pull-left">
+                                <div class="list-actions">
+                                    <a href="javascript:;"><i class="fa fa-eye"></i><span>{$vo['click']}</span></a>
+                                </div>
+                            </div>
+                            <a class="btn btn-warning pull-right" target="_blank" href="article?id={$vo['id']}">详细内容</a>
+                        </div>
+                    </div>
+                </volist>
+            </div>
+            <div class="pagination">
+                {$pageStr}
+            </div>
+        </div>
+    </div>
+
+    <include file="Public/indexfooter" />

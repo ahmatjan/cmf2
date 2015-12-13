@@ -2,10 +2,17 @@
 <project version="4">
   <component name="PublishConfigData" serverName="thinkphp">
     <serverData>
+      <paths name="monitor">
+        <serverdata>
+          <mappings>
+            <mapping local="$PROJECT_DIR$" web="/" />
+          </mappings>
+        </serverdata>
+      </paths>
       <paths name="thinkphp">
         <serverdata>
           <mappings>
-            <mapping local="$PROJECT_DIR$" web="newcms" />
+            <mapping local="$PROJECT_DIR$" web="cmf" />
           </mappings>
         </serverdata>
       </paths>

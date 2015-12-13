@@ -7,27 +7,46 @@ class UserController extends FrontController {
 		parent::_initialize();
 	}
 	
-	public function log(){
+	public function adminLogin(){
 		$this->assign('jsFiles', array('user.js'));
 		$this->display();
 	}
-	
+
+	//登录
 	public function doLogin(){
-		$userid = I('post.userid');
+		$username = I('post.username');
 		$password = I('post.password');
 		
 		$pwd = md5($password);
 		$dao = D('User');
-		$info = $dao->where(array('userid' => $userid, 'password' => $pwd))->find();
+		$info = $dao->where(array('username' => $username, 'password' => $pwd))->find();
 		if(!empty($info)){
-			$_SESSION['userInfo']['userid'] = $info['id'];
+			$_SESSION['userInfo']['id'] = $info['id'];
+			$_SESSION['userInfo']['username'] = $info['username'];
 			$_SESSION['userInfo']['type'] = $info['type'];
-			$_SESSION['userInfo']['nick'] = $info['nick'];
+			$_SESSION['userInfo']['truename'] = $info['truename'];
+			$this->display("Index:index");
+		}else{
+			$this->display("Index:index");
+		}
+	}
+
+	public function doAdminLogin(){
+		$username = I('post.username');
+		$password = I('post.password');
+
+		$pwd = md5($password);
+		$dao = D('User');
+		$info = $dao->where(array('username' => $username, 'password' => $pwd))->find();
+		if(!empty($info)){
+			$_SESSION['userInfo']['id'] = $info['id'];
+			$_SESSION['userInfo']['username'] = $info['username'];
+			$_SESSION['userInfo']['type'] = $info['type'];
+			$_SESSION['userInfo']['truename'] = $info['truename'];
 			exit('success');
 		}else{
 			exit('badpwd');
 		}
-		
 	}
 	
 	function logout(){
@@ -36,8 +55,8 @@ class UserController extends FrontController {
 	}
 	    
     function is_login(){
-    	if(!empty($_SESSION['userInfo']['userid'])){
-    		$this->ajaxReturn(array("status"=>1,"user"=>$_SESSION['userInfo']['nick']));
+    	if(!empty($_SESSION['userInfo']['id'])){
+    		$this->ajaxReturn(array("status"=>1,"user"=>$_SESSION['userInfo']['truename']));
     	}else{
     		$this->ajaxReturn(array("status"=>0,"info"=>"此用户未登录！"));
     	}
@@ -52,35 +71,56 @@ class UserController extends FrontController {
 	}
 	
 	public function center(){
-		$info = D('User')->where(array('id' => $_SESSION['userInfo']['userid']))->find();
+		$info = D('User')->where(array('id' => $_SESSION['userInfo']['id']))->find();
 		$this->assign('info', $info);
 		$this->display();
 	}
-	
+
+	//转入修改用户信息页面
+	public function modify(){
+		$userid = $_SESSION['userInfo']['id'];
+
+		$dao = D('user');
+		$userInfo = $dao->where(array('id'=>$userid))->find();
+		$this->assign("userInfo",$userInfo);
+		$this->display();
+	}
+
+	//修改用户信息
 	public function doModify(){
 		$dao = D('User');
-		if(!empty($_POST['password'])){
-			$info = $dao->where(array('id' => $_SESSION['userInfo']['userid'], 'password' => md5($_POST['oldpassword'])))->find();
-			if(empty($info)){
-				exit('badpwd');
+		$sessionUserid = $_SESSION['userInfo']['id'];
+		$inputUserid = $_POST['userid'];
+
+		if ($sessionUserid == $inputUserid){
+			$_POST['sex'] = urldecode($_POST['sex']);
+			$_POST['truename'] = urldecode($_POST['truename']);
+			$_POST['company'] = urldecode($_POST['company']);
+			$_POST['department'] = urldecode($_POST['department']);
+			$_POST['job'] = urldecode($_POST['job']);
+			$_POST['email'] = urldecode($_POST['email']);
+			$_POST['contact'] = urldecode($_POST['contact']);
+
+			if(empty($_POST['password'])){
+				unset($_POST['password']);
+			}else{
+				$_POST['password'] = md5($_POST['password']);
 			}
+
+			$dao->where(array('id'=>$inputUserid))->save($_POST);
 		}
-		if(empty($_POST['password'])){
-			unset($_POST['password']);
-		}else{
-			$_POST['password'] = md5($_POST['password']);
-		}
-		$_POST['nick'] = urldecode($_POST['nick']);
-		$dao->where(array('id' => $_SESSION['userInfo']['userid']))->save($_POST);
+
 		exit('success');
 	}
-	
+
+	//增加一个新注册用户
 	public function doReg(){
 		$dao = D('User');
-		if(strtoupper($_POST['code']) !== $_SESSION['code']) exit('badcode');
-		$info = $dao->where(array('userid' => $_POST['userid']))->find();
+		$info = $dao->where(array('username' => $_POST['username']))->find();
+		//默认添加的都是普通用户
 		if(empty($info)){
 			$_POST['password'] = md5($_POST['password']);
+			$_POST['truename'] = urldecode($_POST['truename']);
 			$id = D('User')->add($_POST);
 			$_SESSION['userInfo'] = array(
 				'userid' => $id,

@@ -1,27 +1,43 @@
 <include file="Public/header" />
+<link href="{$siteInfo['webFolder']}static/css/front.css" rel="stylesheet">
 	<div class="rightDiv">
 		<div class="title">
-			{$type}管理
+			<a href="{$siteInfo['webFolder']}admin/userAdd">增加新用户</a>
 		</div>
 		<table>
 			<tr>
 				<th>用户名</th>
-				<th>昵称</th>
+				<th>性别</th>
+				<th>工作单位</th>
+				<th>部门</th>
+				<th>职务</th>
+				<th>邮箱</th>
+				<th>联系方式</th>
+				<th>真实姓名</th>
 				<th>级别</th>
+				<th>所属会员组</th>
 				<th>操作</th>
 			</tr>
 			<volist name="users" id="vo">
 			<tr>
-				<td>&nbsp;{$vo['userid']}</td>
-				<td>&nbsp;{$vo['nick']}</td>
-				<td>&nbsp;<if condition="$vo['type']">{$types[$vo['type']]}<else />普通会员</if></td>
+				<td>&nbsp;{$vo['username']}</td>
+				<td>&nbsp;{$vo['sex']}</td>
+				<td>&nbsp;{$vo['company']}</td>
+				<td>&nbsp;{$vo['department']}</td>
+				<td>&nbsp;{$vo['job']}</td>
+				<td>&nbsp;{$vo['email']}</td>
+				<td>&nbsp;{$vo['contact']}</td>
+				<td>&nbsp;{$vo['truename']}</td>
+				<td>&nbsp;{$types[$vo['type']]}</td>
+				<td>&nbsp;{$vo['groupname']}</td>
 				<td>&nbsp;
-				<a href="userModify?id={$vo['id']}">更改</a>
-				<a class="delSub" href="javascript: void(0);">删除</a>
+				<a href="{$siteInfo['webFolder']}admin/userModify?id={$vo['id']}">更改</a>
+				<a href="{$siteInfo['webFolder']}admin/delUser?id={$vo['id']}">删除</a>
 				<input type="hidden" class="id" value="{$vo['id']}" />
 				</td>
 			</tr>
 			</volist>
 		</table>
+		<div class="pagination">{$page}</div>
 	</div>
 <include file="Public/footer" />

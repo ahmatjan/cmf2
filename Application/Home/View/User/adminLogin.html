@@ -1,0 +1,20 @@
+<include file="Public/header" />
+	<if condition="$userInfo['userid'] AND $userInfo['type']">
+		<div id="userpanel">
+			欢迎您，{$userInfo['truename']}<br />
+			<a href="{$webFolder}member/modify" target="rightFrame">修改信息</a>
+			<a href="{$webFolder}member/logout">退出登录</a>
+		</div>
+	<else />
+		<form id="logForm" name="logForm">
+			<label for="username">用户名:</label>
+			<input type="text" id="username" name="username" /><br />
+			<label for="password">密码:</label>
+			<input type="password" id="password" name="password" /><br />
+			<label for="vcode">验证码:</label>
+			<input type="text" class="short" id="vcode" name="vcode" />
+			<img id="imgCode" src="{$siteInfo['webFolder']}code" /><br />
+			<input type="button" id="logSub" class="button" name="logSub" value="提交" />
+		</form>
+	</if>
+<include file="Public/footer" />

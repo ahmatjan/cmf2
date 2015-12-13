@@ -1,0 +1,40 @@
+<include file="Public/indexheader" />
+
+<link href="{$siteInfo['webFolder']}static/css/base.css" type="text/css" rel="stylesheet" />
+<link href="{$siteInfo['webFolder']}static/css/lanrenzhijia.css"  type="text/css" rel="stylesheet"/>
+
+<script type="text/javascript" src="{$siteInfo['webFolder']}static/js/jquery.js"></script>
+<script type="text/javascript" src="{$siteInfo['webFolder']}static/js/lanrenzhijia.js"></script>
+
+
+<div style="width:530px;margin:100px auto;">
+    <div class="search_box">
+        <span class="left l_bg"></span>
+        <span class="right r_bg"></span>
+        <div class="search">
+            <form name=search_form action="{$siteInfo['webFolder']}article/advSearch" target="_blank" method=get>
+                <div id="pt1" class="select">
+                    <a id="s0">搜索标题</a>
+                    <div style="display:none;" id="pt2" class="part">
+                        <p>
+                            <a id="s1">搜索标题</a>
+                            <a id="s2">搜索关键字</a>
+                            <a id="s3">搜索简介</a>
+                            <a id="s4">搜索内容</a>
+                            <a id="s5">搜索分类</a>
+                            <a id="s6">搜索附件</a>
+                            <a id="s7">搜索表格</a>
+                        </p>
+                    </div>
+                </div>
+                <input id="catid" name="catid" type="hidden" value="0">
+                <input id="q" class="enter" name="keyword"   value="">
+                <input class="sb" name="Input" type="submit" value="">
+            </form>
+        </div>
+    </div>
+</div>
+
+
+
+<include file="Public/indexfooter" />

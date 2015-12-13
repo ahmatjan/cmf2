@@ -1,4 +1,4 @@
-<include file="Public/indexheader" />
+<include file="Public/publicheader" />
 
 	<div class="container tc-main">
 		<div class="row">
@@ -77,11 +77,11 @@
 				alert('请输入验证码');
 				return;
 			}
-			$.post('doLogin.html', {userid: userid, password: password, code: verify}, function(data){
+			$.post('doLogin.html', {username: userid, password: password, code: verify}, function(data){
 				switch(data){
 					case 'success':
 						alert('登录成功');
-						location.href = '../index';
+						top.location.reload();
 						break;
 					case 'badcode':
 						alert('验证码错误，请重试');

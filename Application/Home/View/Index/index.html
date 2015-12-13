@@ -1,26 +1,86 @@
 <include file="Public/indexheader" />
-<style>
-ul.indexarticle{
-	padding-left: 0px;
-	margin-left: 0;
-}
-ul.indexarticle li{
-	list-style-type: none;
-}
-</style>
-<div class="container">	
-	<div class="row">
-		<volist name="topFolders" id="vo" key="k">
-		<div class="span4">
-			 <h2 class="font-large nospace"><i class="fa fa-bars"></i>{$vo['name']}</h2>
-             <ul class="indexarticle">
-			 <volist name="vo['articles']" id="article">
-			 <li><a href="{$siteInfo['webFolder']}article/article?id={$article['id']}" target="_blank">{$article['title']}</a></li>
-			 </volist>
-			 </ul>
-		</div>
-		<if condition="$k % 3 eq 0"><div style="clear: both; width: 0; height: 0;"></div></if>
-		</volist>
-	</div>
+<link rel="stylesheet" type="text/css" href="{$siteInfo['webFolder']}static/css/master.css" />
+<link rel="stylesheet" type="text/css" href="{$siteInfo['webFolder']}static/css/base.css" />
+<link rel="stylesheet" type="text/css" href="{$siteInfo['webFolder']}static/css/zTreeStyle/zTreeStyle.css">
+<link rel="stylesheet" type="text/css" href="{$siteInfo['webFolder']}static/css/demo.css" >
+<link rel="stylesheet" type="text/css" href="{$siteInfo['webFolder']}static/css/front/g.css" />
+<link rel="stylesheet" type="text/css" href="{$siteInfo['webFolder']}static/css/front/css.css"  />
+
+<script type="text/javascript" src="{$siteInfo['webFolder']}static/js/jquery.ztree.core-3.5.js"></script>
+<script type="text/javascript" src="{$siteInfo['webFolder']}static/js/front/tree.js"></script>
+<script type="text/javascript" src="{$siteInfo['webFolder']}static/js/front/selectbox.js"></script>
+
+<script type="text/javascript"> $(document).ready(function() {$('#mySle').selectbox();});</script>
+<div id="top" class="front_top">
+</div>
+<div class="searchbox">
+    <div class="searchZone clearfix">
+        <form action="{$siteInfo['webFolder']}article/advSearch" target="rightFrame">
+            <fieldset>
+                <label>
+                    <input type="text" class="text" name="keyword" onblur="if(this.value==''){this.value='请输入关键字';this.style.color='#aaa'}" onfocus="if(this.value=='请输入关键字'){this.value='';this.style.color='#333'}" value="请输入关键字" />
+                </label>
+                <div class="left">
+                    <select style="display: none;" name="mySle" id="mySle">
+                        <option selected="selected" value="0">搜索标题</option>
+                        <option value="1">搜索关键字</option>
+                        <option value="2">搜索作者</option>
+                        <option value="3">搜索摘要</option>
+                        <option value="4">搜索内容</option>
+                        <option value="5">搜索目录</option>
+                        <option value="6">搜索附件</option>
+                        <option value="7">搜索表格</option>
+                    </select>
+                </div>
+                <label>
+                    <button type="submit">搜索</button>
+                </label>
+            </fieldset>
+        </form>
+    </div>
+</div>
+
+<?php
+    $user = $_SESSION['userInfo'];
+    $userid = $_SESSION['userInfo']['id'];
+    $username = $_SESSION['userInfo']['username'];
+?>
+<div id="left" >
+    <div class="sidebar fleft">
+        <ul>
+            <li>
+                <if condition="$username neq ''">
+                    <div class="title">您好，{$username} &nbsp;&nbsp;</div>
+                    <ul class="menu">
+                        <li> <a href="{$siteInfo['webFolder']}user/logout">退出登录</a></li>
+                        <li> <a href="{$siteInfo['webFolder']}user/modify">修改信息</a></li>
+                    </ul>
+                <else/>
+                    <div class="title">您好，游客 &nbsp;&nbsp;</div>
+                    <br>
+                    <ul class="menu">
+                        <form method="post" action="{$siteInfo['webFolder']}user/doLogin">
+                            <label for="username">用户名:</label>
+                            <input type="text" id="username" name="username"> <br>
+                            <label for="password">密码:&nbsp;&nbsp;&nbsp;</label>
+                            <input type="password" id="password" name="password"> <br>
+                            <input type="submit" name="登录">
+                        </form>
+                        <li> <a href="{$siteInfo['webFolder']}user/reg">注册用户</a></li>
+                    </ul>
+                </if>
+            </li>
+            <li>
+                <div class="title">文章栏目</div>
+                <ul id="articleTree" class="ztree"></ul>
+            </li>
+            <br>
+        </ul>
+    </div>
+</div>
+<div id="right" class="rightDiv">
+    <iframe  src="{$siteInfo['webFolder']}article/folder" scrolling="none" id="rightFrame" name="rightFrame">
+    </iframe>
+</div>
 
 <include file="Public/indexfooter" />

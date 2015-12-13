@@ -1,0 +1,93 @@
+[ 2015-12-04T09:40:44+08:00 ] ::1 /cmf/admin
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000120s ]
+INFO: [ app_init ] --END-- [ RunTime:0.001085s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.000820s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.001383s ]
+NOTIC: [8] A session had already been started - ignoring session_start() C:\wamp\www\cmf\Application\Home\Controller\Base.class.php 第 8 行.
+INFO: [ view_parse ] --START--
+INFO: [ template_filter ] --START--
+INFO: Run Behavior\ContentReplaceBehavior [ RunTime:0.000280s ]
+INFO: [ template_filter ] --END-- [ RunTime:0.000834s ]
+INFO: Run Behavior\ParseTemplateBehavior [ RunTime:0.040703s ]
+INFO: [ view_parse ] --END-- [ RunTime:0.041313s ]
+INFO: [ view_filter ] --START--
+INFO: Run Behavior\WriteHtmlCacheBehavior [ RunTime:0.000600s ]
+INFO: [ view_filter ] --END-- [ RunTime:0.001129s ]
+INFO: [ app_end ] --START--
+INFO: Run Behavior\ShowPageTraceBehavior [ RunTime:0.000708s ]
+INFO: [ app_end ] --END-- [ RunTime:0.001247s ]
+
+[ 2015-12-04T09:40:44+08:00 ] ::1 /cmf/admin/tree
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000113s ]
+INFO: [ app_init ] --END-- [ RunTime:0.001003s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.000710s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.001138s ]
+NOTIC: [8] A session had already been started - ignoring session_start() C:\wamp\www\cmf\Application\Home\Controller\Base.class.php 第 8 行.
+NOTIC: [8] Undefined index: db_host C:\wamp\www\cmf\ThinkPHP\Library\Think\Db.class.php 第 66 行.
+NOTIC: [8] Undefined index: db_name C:\wamp\www\cmf\ThinkPHP\Library\Think\Db.class.php 第 68 行.
+SQL: SHOW COLUMNS FROM `tbl_folder` [ RunTime:0.0073s ]
+SQL: SELECT * FROM `tbl_folder` WHERE ( parent = 0 )  [ RunTime:0.0004s ]
+SQL: SELECT * FROM `tbl_folder` WHERE ( parent=32 )  [ RunTime:0.0003s ]
+SQL: SELECT * FROM `tbl_folder` WHERE ( parent=35 )  [ RunTime:0.0003s ]
+SQL: SELECT * FROM `tbl_folder` WHERE ( parent=36 )  [ RunTime:0.0002s ]
+SQL: SELECT * FROM `tbl_folder` WHERE ( parent=37 )  [ RunTime:0.0002s ]
+SQL: SELECT * FROM `tbl_folder` WHERE ( parent=38 )  [ RunTime:0.0002s ]
+SQL: SELECT * FROM `tbl_folder` WHERE ( parent=39 )  [ RunTime:0.0002s ]
+SQL: SELECT * FROM `tbl_folder` WHERE ( parent=33 )  [ RunTime:0.0002s ]
+SQL: SELECT * FROM `tbl_folder` WHERE ( parent=34 )  [ RunTime:0.0002s ]
+SQL: SELECT * FROM `tbl_folder` WHERE ( parent=40 )  [ RunTime:0.0002s ]
+INFO: [ app_end ] --START--
+INFO: Run Behavior\ShowPageTraceBehavior [ RunTime:0.000719s ]
+INFO: [ app_end ] --END-- [ RunTime:0.001153s ]
+
+[ 2015-12-04T09:40:44+08:00 ] ::1 /cmf/admin/article
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000111s ]
+INFO: [ app_init ] --END-- [ RunTime:0.000927s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.000963s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.001675s ]
+NOTIC: [8] A session had already been started - ignoring session_start() C:\wamp\www\cmf\Application\Home\Controller\Base.class.php 第 8 行.
+NOTIC: [8] Undefined index: db_host C:\wamp\www\cmf\ThinkPHP\Library\Think\Db.class.php 第 66 行.
+NOTIC: [8] Undefined index: db_name C:\wamp\www\cmf\ThinkPHP\Library\Think\Db.class.php 第 68 行.
+SQL: SHOW COLUMNS FROM `tbl_article` [ RunTime:0.0069s ]
+SQL: SHOW COLUMNS FROM `tbl_article` [ RunTime:0.0031s ]
+SQL: SELECT DISTINCT  COUNT(*) AS tp_count FROM tbl_article a JOIN tbl_article_folder f ON f.article=a.id WHERE ( 1 ) ORDER BY a.updatetime desc LIMIT 1   [ RunTime:0.0003s ]
+SQL: SHOW COLUMNS FROM `tbl_article` [ RunTime:0.0029s ]
+SQL: SELECT DISTINCT  a.* FROM tbl_article a LEFT JOIN tbl_article_folder f on a.id = f.article WHERE ( 1 ) LIMIT 0,30   [ RunTime:0.0005s ]
+SQL: SHOW COLUMNS FROM `tbl_article_folder` [ RunTime:0.0057s ]
+SQL: SELECT * FROM `tbl_article_folder` WHERE ( article = 41 )  [ RunTime:0.0003s ]
+SQL: SHOW COLUMNS FROM `tbl_article_group` [ RunTime:0.0060s ]
+SQL: SELECT * FROM `tbl_article_group` WHERE ( article = 41 )  [ RunTime:0.0003s ]
+SQL: SHOW COLUMNS FROM `tbl_article_folder` [ RunTime:0.0030s ]
+SQL: SELECT * FROM `tbl_article_folder` WHERE ( article = 39 )  [ RunTime:0.0003s ]
+SQL: SHOW COLUMNS FROM `tbl_article_group` [ RunTime:0.0029s ]
+SQL: SELECT * FROM `tbl_article_group` WHERE ( article = 39 )  [ RunTime:0.0003s ]
+SQL: SHOW COLUMNS FROM `tbl_user` [ RunTime:0.0055s ]
+SQL: SELECT * FROM `tbl_user`  [ RunTime:0.0003s ]
+SQL: SHOW COLUMNS FROM `tbl_folder` [ RunTime:0.0030s ]
+SQL: SELECT * FROM `tbl_folder`  [ RunTime:0.0004s ]
+SQL: SHOW COLUMNS FROM `tbl_group` [ RunTime:0.0059s ]
+SQL: SELECT * FROM `tbl_group`  [ RunTime:0.0003s ]
+SQL: SHOW COLUMNS FROM `tbl_user` [ RunTime:0.0030s ]
+SQL: SELECT * FROM `tbl_user` WHERE ( type > 1 )  [ RunTime:0.0003s ]
+INFO: [ view_parse ] --START--
+INFO: [ template_filter ] --START--
+INFO: Run Behavior\ContentReplaceBehavior [ RunTime:0.000282s ]
+INFO: [ template_filter ] --END-- [ RunTime:0.000844s ]
+NOTIC: [8] Undefined offset: 0 C:\wamp\www\cmf\Application\Runtime\Cache\Home\4053fbe20704e789253330b79676b603.php 第 59 行.
+NOTIC: [8] Undefined index: comments C:\wamp\www\cmf\Application\Runtime\Cache\Home\4053fbe20704e789253330b79676b603.php 第 76 行.
+NOTIC: [8] Undefined index: comments C:\wamp\www\cmf\Application\Runtime\Cache\Home\4053fbe20704e789253330b79676b603.php 第 76 行.
+INFO: Run Behavior\ParseTemplateBehavior [ RunTime:0.062960s ]
+INFO: [ view_parse ] --END-- [ RunTime:0.063520s ]
+INFO: [ view_filter ] --START--
+INFO: Run Behavior\WriteHtmlCacheBehavior [ RunTime:0.000616s ]
+INFO: [ view_filter ] --END-- [ RunTime:0.001153s ]
+INFO: [ app_end ] --START--
+INFO: Run Behavior\ShowPageTraceBehavior [ RunTime:0.000642s ]
+INFO: [ app_end ] --END-- [ RunTime:0.001156s ]
+

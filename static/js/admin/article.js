@@ -35,9 +35,9 @@ $(document).ready(function(){
 		$('form').get(0).submit();
 	})
 	$('.deleteaudit').click(function(){
-		if(window.confirm('取消审核后您要重新审核才能发布，您确定要取消审核吗？')){
+		if(window.confirm('撤回后您要重新提交审核并通过后才能发布，您确定要撤回吗？')){
 			$.post('delarticle', {id: $(this).parent().find('input:hidden').val(), type: 'deleteaudit'}, function(data){
-				alert('取消成功');
+				alert('撤回成功');
 				location.reload();
 			});
 		}
@@ -84,7 +84,7 @@ $(document).ready(function(){
 				var str = '';
 				var backData = $.parseJSON(data);
 				for(var i = 0; i < backData.length; i++){
-					str += '<li><span class="time">' + backData[i].time + '</span><span class="info"><i>' + backData[i].auditer + '</i>' + (backData[i].status == 1 ? '驳回了申请' : (backData[i].status == 2 ? '通过申请' : '接受了申请但未审核')) + '</span>' + (backData[i].comment == '' ? '' : ('<span class="comment">附言：' + backData[i].comment + '</span>')) + '</li>'
+					str += '<li><span class="time">' + backData[i].time + '</span><span class="info"><i>' + backData[i].auditor + '</i>' + (backData[i].status == 1 ? '驳回了申请' : (backData[i].status == 2 ? '通过申请' : '接受了申请')) + '</span>' + (backData[i].comment == '' ? '' : ('<span class="comment">附言：' + backData[i].comment + '</span>')) + '</li>'
 				}
 				$('#seeauditDiv ul').html(str);
 			}
@@ -103,13 +103,13 @@ function showAudit(id, flag){
 	if(flag){
 		$('#rltDiv').css('display', 'block');
 		$('#rlt1').prop('checked', true);
-		if($('#auditer option:first').val() != 0){
-			$('#auditer').prepend('<option value="0">无需审核，直接通过</option>');
+		if($('#auditor option:first').val() != 0){
+			$('#auditor').prepend('<option value="0">无需审核，直接通过</option>');
 		}
 	}else{
 		$('#rltDiv').css('display', 'none');
-		if($('#auditer option:first').val() == 0){
-			$('#auditer option:first').remove();
+		if($('#auditor option:first').val() == 0){
+			$('#auditor option:first').remove();
 		}
 	}
 	$('#audittype').val(flag);

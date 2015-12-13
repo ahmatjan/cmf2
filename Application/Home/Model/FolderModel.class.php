@@ -1,7 +1,21 @@
 <?php
 namespace Home\Model;
 class FolderModel extends DataModel{
-	
+
+	public function getJqTree($root = 0){
+		$info = $this->where("parent = %d",$root)->order(array('order'=>'desc'))->select();
+		$folders = array();
+
+		$i = 0;
+		foreach($info as $val){
+			$folders[$i]['id'] = $val['id'];
+			$folders[$i]['label'] = $val['name'];
+			$i++;
+		}
+
+		return $folders;
+	}
+
 	public function getTree($root = 0){
 		$info = $this->order(array('`order`' => 'desc'))->select();
 		$folders = array();

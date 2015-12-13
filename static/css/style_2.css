@@ -1,0 +1,19 @@
+#tree i{
+	display: inline-block;
+	width: 11px;
+	height: 20px;
+	margin-right: 2px;
+	vertical-align: middle;
+}
+#tree li a{
+	vertical-align: middle;
+}
+#tree i.close{
+	background: url(../images/dedeexplode.gif) no-repeat center;
+	cursor: pointer;
+	float: none;
+}
+#tree i.open{
+	background: url(../images/dedecontract.gif) no-repeat center;
+	cursor: pointer;
+}

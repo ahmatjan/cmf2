@@ -1,4 +1,4 @@
-var webFolder = '/newcms/';
+var webFolder = '/cmf/';
 
 $(document).ready(function(){
 	$('a[target=right]').click(function(){
@@ -12,10 +12,12 @@ $(document).ready(function(){
 
 function resizeWindow(){
 	var height = $(window).height();
-	$('#left').css('height', height + 'px');
-	$('#right').css('height', height + 'px');
+	//$('#left').css('height', height + 'px');
+	//$('#right').css('height', height + 'px');
+	var leftheight = $('#left').height();
+	$('#right').css('height',leftheight+'px');
 	var width = $(window).width();
-	$('#right').css('width', width - 285+ 'px');
+	$('#right').css('width', width - 280+ 'px');
 }
 
 function changeVerify(){

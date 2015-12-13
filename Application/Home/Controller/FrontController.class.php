@@ -7,6 +7,9 @@ class FrontController extends Base {
 		$dao = D('Folder');
 		$info = $dao->where(array('parent' => 0))->select();
 		$this->assign('topFolder', $info);
+
+
+
 		parent::_initialize();
 	}
 	

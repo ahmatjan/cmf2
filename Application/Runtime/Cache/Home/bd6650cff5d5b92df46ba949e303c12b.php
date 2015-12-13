@@ -12,8 +12,7 @@
 	<body>
 	<div class="rightDiv">
 		<div class="title">
-			<input type="button" id="addFolder" name="addFolder" value="增加顶级栏目" onclick="location.href='folderAdd';" />
-			网站栏目管理
+			<a href="<?php echo ($siteInfo['webFolder']); ?>admin/folderAdd">增加顶级栏目</a>
 		</div>
 		<ul id="tree">
 			<?php if(is_array($tree)): $i = 0; $__LIST__ = $tree;if( count($__LIST__)==0 ) : echo "" ;else: foreach($__LIST__ as $key=>$vo): $mod = ($i % 2 );++$i;?><li>

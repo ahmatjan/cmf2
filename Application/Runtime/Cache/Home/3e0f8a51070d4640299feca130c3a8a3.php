@@ -65,52 +65,7 @@
 			}
 		</style>
 	</head>
-<body class="body-white">
-<div class="navbar navbar-fixed-top">
-   <div class="navbar-inner">
-     <div class="container">
-       <a class="btn btn-navbar" data-toggle="collapse" data-target=".nav-collapse">
-         <span class="icon-bar"></span>
-         <span class="icon-bar"></span>
-         <span class="icon-bar"></span>
-       </a>
-       <div class="nav-collapse collapse" id="main-menu">
-       	<ul id=""  class="nav">
-		<li   class=''   id= 'menu-item-1'><a href='<?php echo ($siteInfo['webFolder']); ?>' target=''>首页</a></li>
-		<?php if(is_array($topFolder)): $i = 0; $__LIST__ = $topFolder;if( count($__LIST__)==0 ) : echo "" ;else: foreach($__LIST__ as $key=>$vo): $mod = ($i % 2 );++$i;?><li   class=''   id= 'menu-item-<?php echo ($index + 3); ?>'><a href='<?php echo ($siteInfo['webFolder']); ?>article/folder?id=<?php echo ($vo['id']); ?>' target=''><?php echo ($vo['name']); ?></a></li><?php endforeach; endif; else: echo "" ;endif; ?>
-		</ul>
-		<ul class="nav pull-right" id="main-menu-user">
-			<li class="dropdown user login">
-	            <a class="dropdown-toggle user" data-toggle="dropdown" href="#">
-	            <img src="<?php echo ($siteInfo['webFolder']); ?>tpl/simplebootx//Public/images/headicon.png" class="headicon"/>
-	            <span class="user-nicename"></span><b class="caret"></b></a>
-	            <ul class="dropdown-menu pull-right">
-	               <li><a href="<?php echo ($siteInfo['webFolder']); ?>user/center"><i class="fa fa-user"></i> &nbsp;修改个人信息</a></li>
-	               <li class="divider"></li>
-	               <li><a href="<?php echo ($siteInfo['webFolder']); ?>user/logout"><i class="fa fa-sign-out"></i> &nbsp;退出</a></li>
-	            </ul>
-          	</li>
-          	<li class="dropdown user offline">
-	            <a class="dropdown-toggle user" data-toggle="dropdown" href="#">
-	           		<img src="<?php echo ($siteInfo['webFolder']); ?>tpl/simplebootx//Public/images/headicon.png" class="headicon"/>登录<b class="caret"></b>
-	            </a>
-	            <ul class="dropdown-menu pull-right">
-	               <li><a href="<?php echo ($siteInfo['webFolder']); ?>user/login"><i class="fa fa-sign-in"></i> &nbsp;登录</a></li>
-	               <li class="divider"></li>
-	               <li><a href="<?php echo ($siteInfo['webFolder']); ?>user/reg"><i class="fa fa-user"></i> &nbsp;注册</a></li>
-	            </ul>
-          	</li>
-		</ul>
-		<!--<div class="pull-right">
-        	<form method="post" class="form-inline" action="<?php echo ($siteInfo['webFolder']); ?>portal/search/index" style="margin:18px 0;">
-				 <input type="text" class="" placeholder="Search" name="keyword" value=""/>
-				 <input type="submit" class="btn btn-info" value="Go" style="margin:0"/>
-			</form>
-		</div>-->
-       </div>
-     </div>
-   </div>
- </div>
+<body class="body-white nopadding">
 	<div class="container tc-main">
 		<div class="row">
 			<div class="span6 offset3">
@@ -192,7 +147,7 @@
 <script type="text/javascript">
 //全局变量
 var GV = {
-    DIMAUB: "/newcms/",
+    DIMAUB: "/cmf/",
     JS_ROOT: "static/js/",
     TOKEN: ""
 };

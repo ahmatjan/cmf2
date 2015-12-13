@@ -11,14 +11,14 @@
 	</head>
 	<body>
 	<?php if($userInfo['userid'] AND $userInfo['type']): ?><div id="userpanel">
-		欢迎您，<?php echo ($userInfo['nick']); ?><br />
+		欢迎您，<?php echo ($userInfo['truename']); ?><br />
 		<a href="<?php echo ($webFolder); ?>member/modify" target="rightFrame">修改信息</a>
 		<a href="<?php echo ($webFolder); ?>member/logout">退出登录</a>
 	</div>
 	<?php else: ?>
 	<form id="logForm" name="logForm">
-	<label for="userid">用户名:</label>
-	<input type="text" id="userid" name="userid" /><br />
+	<label for="username">用户名:</label>
+	<input type="text" id="username" name="username" /><br />
 	<label for="password">密码:</label>
 	<input type="password" id="password" name="password" /><br />
 	<label for="vcode">验证码:</label>

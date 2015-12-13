@@ -1,66 +1,29 @@
-<include file="Public/indexheader" />
-<div class="container tc-main">
-	
-	
-    <div class="pg-opt pin">
-        <div class="container">
-            <h2>{$folder['name']}</h2>
-        </div>
-    </div>
-    <div class="row">
-		<div class="span9">
-			<div class="">
-<volist name="articles" id="vo">												
-				<div class="list-boxes">
-					<h2><a href="article?id={$vo['id']}" target="_blank">{$vo['title']}</a></h2>
-					<p>{$vo['contract']}...</p>
-					<div>
-						<div class="pull-left">
-							<div class="list-actions">
-							<a href="javascript:;"><i class="fa fa-eye"></i><span>{$vo['click']}</span></a>
-							</div>
-						</div>
-						<a class="btn btn-warning pull-right" target="_blank" href="article?id={$vo['id']}">查看更多</a>
-					</div>
-				</div>	
-</volist>				
-			</div>
-			<div class="pagination">
-				{$pageStr}
-			</div>
-		</div>
-		<div class="span3">
-			<div class="tc-box first-box">
-			<div class="headtitle">
-          		<h2>分享</h2>
-          	</div>
-			<div class="bdsharebuttonbox"><a href="#" class="bds_more" data-cmd="more"></a><a href="#" class="bds_tsina" data-cmd="tsina" title="分享到新浪微博"></a><a href="#" class="bds_tqq" data-cmd="tqq" title="分享到腾讯微博"></a><a href="#" class="bds_qzone" data-cmd="qzone" title="分享到QQ空间"></a><a href="#" class="bds_tqf" data-cmd="tqf" title="分享到腾讯朋友"></a><a href="#" class="bds_renren" data-cmd="renren" title="分享到人人网"></a><a href="#" class="bds_youdao" data-cmd="youdao" title="分享到有道云笔记"></a></div>
-			<script>window._bd_share_config={"common":{"bdSnsKey":{},"bdText":"","bdMini":"2","bdMiniList":false,"bdPic":"","bdStyle":"2","bdSize":"32"},"share":{}};with(document)0[(getElementsByTagName('head')[0]||body).appendChild(createElement('script')).src='http://bdimg.share.baidu.com/static/api/js/share.js?v=86835285.js?cdnversion='+~(-new Date()/36e5)];</script>          
-        	</div>
-			
-			<div class="tc-box">
-				<if condition="$subFolder">
-	        	<div class="headtitle">
-	        		<h2>文章类别</h2>
-	        	</div>
-				<div class="posts">
-					<volist name="subFolder" id="vo">
-					<a href="folder?id={$vo['id']}">{$vo['name']}</a><br />
-					</volist>
-				</div>
-				<else />
-	        	<div class="headtitle">
-	        		<h2>最新发布</h2>
-	        	</div>
-				<div class="posts">
-					<volist name="posts" id="vo">
-					<a href="article?id={$vo['id']}" target="_blank">{$vo['title']}</a><br />
-					</volist>
-				</div>
-				</if>
-			</div>
-			
-		</div>
-    </div>
+<link href="{$siteInfo['webFolder']}static/css/front/layout.css" rel="stylesheet" type="text/css">
+<link href="{$siteInfo['webFolder']}static/css/front/front.css" rel="stylesheet" type="text/css"/>
 
-<include file="Public/indexfooter" />
+<div id="alone_content" class="w1000 fr">
+	<div>
+		<div class="rb_top2">
+			<span style="line-height: 25px;margin: 0 0 0 10px;color:#ffffff;">{$folderName}</span>
+		</div>
+		<div class="rb_mid box">
+			<div class="w96" style="min-height:400px;">
+				<div class="c1-body">
+					<volist name="articles" id="vo">
+					<div class="c1-bline" style="padding:10px 0;">
+						<div class="f-left"><img src="{$siteInfo['webFolder']}static/img/head-mark5.gif" align="middle" class="img-vm" border="0"> &nbsp;
+
+							<a href="{$siteInfo['webFolder']}article/article?id={$vo['id']}" title="{$vo['title']}" target="_blank">
+								<span style="">{$vo['title']}</span>
+							</a>
+						</div>
+						<div class="gray f-right">{$vo['updatetime']}</div>
+						<div class="clear">
+						</div>
+					</div>
+					</volist>
+				</div>
+			</div>
+		</div>
+	</div>
+</div>

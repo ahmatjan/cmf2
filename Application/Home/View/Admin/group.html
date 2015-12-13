@@ -1,19 +1,30 @@
 <include file="Public/header" />
 	<div class="rightDiv">
 		<div class="title">
-			<input type="button" id="addGroup" name="addGroup" value="增加会员组" onclick="location.href='groupAdd';" />
-			会员组管理
+			<a href="{$siteInfo['webFolder']}admin/groupAdd">增加会员组</a>
 		</div>
-		<ul>
+		<table>
+			<tr>
+				<th>会员组编号</th>
+				<th>会员组名称</th>
+				<th>操作</th>
+			</tr>
 			<volist name="group" id="vo">
-			<li>
-				<a class="delSub" href="javascript: void(0);">删除</a>
-				<a href="groupModify?id={$vo['id']}">更改</a>
-				<span>{$vo['name']}</span>
-				<input type="hidden" class="id" value="{$vo['id']}" />
-				<div class="c"></div>
-			</li>
+			<tr>
+				<td>
+					<span>{$vo['id']}</span>
+				</td>
+				<td>
+					<span>{$vo['name']}</span>
+				</td>
+				<td>
+					<a class="delSub" href="javascript: void(0);">删除</a>
+					<a href="groupModify?id={$vo['id']}">更改</a>
+					<input type="hidden" class="id" value="{$vo['id']}" />
+					<div class="c"></div>
+				</td>
+			</tr>
 			</volist>
-		</ul>
+		</table>
 	</div>
 <include file="Public/footer" />

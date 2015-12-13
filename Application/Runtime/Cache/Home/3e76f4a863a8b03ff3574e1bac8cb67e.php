@@ -11,6 +11,7 @@
 	</head>
 	<body>
 	<div class="rightDiv">
+		<br>
 		<label for="name">栏目名称</label>
 		<input type="text" id="name" name="name" value="<?php echo ($info['name']); ?>" /><br />
 		<input type="hidden" id="parent" name="parent" value="<?php if(isset($parent)): echo ($parent); else: echo ($info['parent']); endif; ?>" />

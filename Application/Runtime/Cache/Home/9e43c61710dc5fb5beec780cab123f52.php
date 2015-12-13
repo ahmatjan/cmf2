@@ -12,18 +12,29 @@
 	<body>
 	<div class="rightDiv">
 		<div class="title">
-			<input type="button" id="addGroup" name="addGroup" value="增加会员组" onclick="location.href='groupAdd';" />
-			会员组管理
+			<a href="<?php echo ($siteInfo['webFolder']); ?>admin/groupAdd">增加会员组</a>
 		</div>
-		<ul>
-			<?php if(is_array($group)): $i = 0; $__LIST__ = $group;if( count($__LIST__)==0 ) : echo "" ;else: foreach($__LIST__ as $key=>$vo): $mod = ($i % 2 );++$i;?><li>
-				<a class="delSub" href="javascript: void(0);">删除</a>
-				<a href="groupModify?id=<?php echo ($vo['id']); ?>">更改</a>
-				<span><?php echo ($vo['name']); ?></span>
-				<input type="hidden" class="id" value="<?php echo ($vo['id']); ?>" />
-				<div class="c"></div>
-			</li><?php endforeach; endif; else: echo "" ;endif; ?>
-		</ul>
+		<table>
+			<tr>
+				<th>会员组编号</th>
+				<th>会员组名称</th>
+				<th>操作</th>
+			</tr>
+			<?php if(is_array($group)): $i = 0; $__LIST__ = $group;if( count($__LIST__)==0 ) : echo "" ;else: foreach($__LIST__ as $key=>$vo): $mod = ($i % 2 );++$i;?><tr>
+				<td>
+					<span><?php echo ($vo['id']); ?></span>
+				</td>
+				<td>
+					<span><?php echo ($vo['name']); ?></span>
+				</td>
+				<td>
+					<a class="delSub" href="javascript: void(0);">删除</a>
+					<a href="groupModify?id=<?php echo ($vo['id']); ?>">更改</a>
+					<input type="hidden" class="id" value="<?php echo ($vo['id']); ?>" />
+					<div class="c"></div>
+				</td>
+			</tr><?php endforeach; endif; else: echo "" ;endif; ?>
+		</table>
 	</div>
 	</body>
 </html>

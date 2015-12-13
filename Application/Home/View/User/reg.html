@@ -1,4 +1,4 @@
-<include file="Public/indexheader" />
+<include file="Public/publicheader" />
 	<div class="container tc-main">
 		<div class="row">
 			<div class="span6 offset3">
@@ -7,14 +7,14 @@
 					<div class="control-group">
 						<label class="control-label" for="input_username">账号</label>
 						<div class="controls">
-							<input type="text" id="input_username" name="username" placeholder="请输入账号" class="span3">
+							<input type="text" id="input_username" name="username" placeholder="请输入登录用户名" class="span3">
 						</div>
 					</div>
 
 					<div class="control-group">
-						<label class="control-label" for="input_email">昵称</label>
+						<label class="control-label" for="input_truename">真实姓名</label>
 						<div class="controls">
-							<input type="text" id="input_nick" name="nick" placeholder="请输入昵称" class="span3">
+							<input type="text" id="input_truename" name="truename" placeholder="请输入用户真实姓名" class="span3">
 						</div>
 					</div>
 
@@ -33,42 +33,20 @@
 					</div>
 
 					<div class="control-group">
-						<label class="control-label" for="input_verify">验证码</label>
-						<div class="controls">
-							<input type="text" id="input_verify" name="verify" placeholder="请输入验证码" class="span3">
-							<img class="verify_img" src="{$siteInfo['webFolder']}code" onclick="this.src='{$siteInfo['webFolder']}code?time='+Math.random();" style="cursor: pointer;" title="点击获取"/>						</div>
-					</div>
-					<div class="control-group">
-						<label class="control-label" for="input_repassword"></label>
-						<div class="controls">
-							<label class="checkbox persistent"><input type="checkbox" name="terms" value="1">
-								我同意<a href="#">网站内容服务条款</a></label>
-						</div>
-					</div>
-
-					<div class="control-group">
 						<label class="control-label" for="input_repassword"></label>
 						<div class="controls">
 							<button class="btn btn-primary J_ajax_submit_btn" type="button" data-wait="1500">确定注册</button>
 						</div>
 					</div>
-
-					<div class="control-group">
-						<label class="control-label" for="input_repassword"></label>
-						<div class="controls">
-							<p>
-								已有账号? <a href="{$siteInfo['webFolder']}user/login">点击此处登录</a>
-							</p>
-						</div>
-					</div>
 				</form>
 			</div>
 		</div>
+
 	<script type="text/javascript">
 	$(document).ready(function(){
 		$('.J_ajax_submit_btn').click(function(){
 			var userid = $.trim($('#input_username').val());
-			var nick = $.trim($('#input_nick').val());
+			var truename = $.trim($('#input_truename').val());
 			var password = $.trim($('#input_password').val());
 			var verify = $.trim($('#input_verify').val());
 			if(userid == ''){
@@ -83,22 +61,13 @@
 				alert('两次输入的密码不一致');
 				return;
 			}
-			if(verify == ''){
-				alert('请输入验证码');
-				return;
-			}
-			if(!$('input[name=terms]').prop('checked')){
-				alert('请同意本站服务条款');
-				return;
-			}
-			$.post('doReg.html', {userid: userid, nick: encodeURIComponent(nick), password: password, code: verify}, function(data){
+
+
+			$.post('doReg', {userid: userid, truename: encodeURIComponent(truename), password: password}, function(data){
 				switch(data){
 					case 'success':
 						alert('注册成功');
 						location.href = '../index';
-						break;
-					case 'badcode':
-						alert('验证码错误，请重试');
 						break;
 					default:
 						alert('提交过程发生错误，请联系管理员');

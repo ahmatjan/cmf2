@@ -3,10 +3,10 @@ $(document).ready(function(){
 		changeVerify();
 	})
 	$('#logSub').click(function(){
-		var userid = $.trim($('#userid').val());
-		if(userid == ''){
+		var username = $.trim($('#username').val());
+		if(username == ''){
 			alert('请输入用户名');
-			$('#userid').focus();
+			$('#username').focus();
 			return;
 		}
 		var password = $.trim($('#password').val());
@@ -22,7 +22,7 @@ $(document).ready(function(){
 			return;
 		}
 		$(this).attr('disabled', true);
-		$.post(webFolder + 'User/doLogin.html', {userid: userid, password: password, code: vcode}, function(data){
+		$.post(webFolder + 'User/doAdminLogin.html', {username: username, password: password, code: vcode}, function(data){
 			$('#logSub').removeAttr('disabled');
 			switch(data){
 				case 'success':
