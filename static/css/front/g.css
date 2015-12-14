@@ -33,3 +33,4 @@ blockquote:before, blockquote:after, q:before, q:after { content: ''; content: n
 filter:ALPHA(opacity=70); z-index:1; background-image: url(../../img/black.png); }
 
 .front_top{height:150px; background:url(../../images/top1.jpg) no-repeat center;}
+.logo{height:147px; text-align:center;}
