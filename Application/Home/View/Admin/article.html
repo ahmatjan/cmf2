@@ -1,60 +1,83 @@
 <include file="Public/header" />
-<link href="{$siteInfo['webFolder']}static/css/front.css" rel="stylesheet">
-	<div class="rightDiv">
-		<div class="title">
-			<a href="{$siteInfo['webFolder']}admin/articleAdd">增加新文章</a>
-		</div>
-		<table>
+<style type="text/css">
+	table.gridtable {
+		font-family: verdana,arial,sans-serif;
+		font-size:11px;
+		color:#333333;
+		border-width: 1px;
+		border-color: #666666;
+		border-collapse: collapse;
+	}
+	table.gridtable th {
+		border-width: 1px;
+		padding: 8px;
+		border-style: solid;
+		border-color: #666666;
+		background-color: #dedede;
+	}
+	table.gridtable td {
+		border-width: 1px;
+		padding: 8px;
+		border-style: solid;
+		border-color: #666666;
+		background-color: #ffffff;
+	}
+</style>
+
+<div class="rightDiv">
+	<div class="title">
+		<a href="{$siteInfo['webFolder']}admin/articleAdd">增加新文章</a>
+	</div>
+	<table class="gridtable">
+		<tr>
+			<th width="25">序号</th>
+			<th width="150">标题</th>
+			<th width="40">作者</th>
+			<th width="40">文章发布人</th>
+			<th width="70">修改日期</th>
+			<th width="70">提交日期</th>
+			<th width="70">发布日期</th>
+			<th width="40">最后审核人</th>
+			<th width="70">审核日期</th>
+			<th width="30">紧急重要度</th>
+			<th width="70">栏目</th>
+			<th width="70">可见用户组</th>
+			<th width="50">文章状态</th>
+			<th>操作</th>
+		</tr>
+		<volist name="articles" id="vo">
 			<tr>
-				<th>序号</th>
-				<th>标题</th>
-				<th>作者</th>
-				<th>文章发布人</th>
-				<th>修改日期</th>
-				<th>提交日期</th>
-				<th>发布日期</th>
-				<th>最后审核人</th>
-				<th>审核日期</th>
-				<th>紧急重要度</th>
-				<th>栏目</th>
-				<th>可见用户组</th>
-				<th>备注</th>
-				<th>文章状态</th>
-				<th>操作</th>
-			</tr>
-			<volist name="articles" id="vo">
-			<tr>
-				<td>
+				<td width="25" align="center">
 					{$vo['id']}
 				</td>
-				<td>
+				<td width="220" align="center">
 					<a href="{$siteInfo['webFolder']}article/article?id={$vo['id']}" target="_blank">{$vo['title']}</a>
 				</td>
-				<td>
+				<td width="40" align="center">
 					{$vo['author']}
 				</td>
-				<td>
+				<td width="40" align="center">
 					{$userMapping[$vo['adder']]}
 				</td>
-				<td>
+				<td width="70" align="center">
 					{$vo['updatetime']}
 				</td>
-				<td>
+				<td width="70" align="center">
 					{$vo['submittime']}
 				</td>
-				<td>
+				<td width="70" align="center">
 					{$vo['publishtime']}
 				</td>
-				<td>
+				<td width="40" align="center">
 					{$userMapping[$vo['auditor']]}
 				</td>
-				<td>
+				<td width="70" align="center">
 					{$vo['audittime']}
 				</td>
-				<td>
+				<td width="30" align="center">
 					{$priorityMapping[$vo['priority']]}
 				</td>
-				<td>
+				<td width="70" align="center">
 					<?php
 						$folders = $vo['folders'];
 						foreach($folders as $folder)
@@ -66,7 +89,7 @@
 						}
 					?>
 				</td>
-				<td>
+				<td width="70">
 					<?php
 						$groups = $vo['groups'];
 						foreach($groups as $group)
@@ -78,13 +101,10 @@
 						}
 					?>
 				</td>
-				<td>
-					{$vo['comments']}
-				</td>
-				<td>
+				<td width="50" align="center">
 					{$statusMapping[$vo['status']]}
 				</td>
-				<td>
+				<td width="110">
 					<input type="hidden" class="id" value="{$vo['id']}" />
 					<?php
 
@@ -110,14 +130,14 @@
 							echo " <a href='javascript: void(0);' class='delete'>删除</a>";
 						}
 						if($vo['status'] == 3 || $vo['status'] == 2){
-							echo " <a href='javascript: void(0);' class='seeaudit'>查看审核历史信息</a>";
+							echo " <a href='javascript: void(0);' class='seeaudit'>审核历史</a>";
 						}
 					?>
 				</td>
-			</volist>
-		</table>
-		<div class="pagination">{$page}</div>
-	</div>
+		</volist>
+	</table>
+	<div class="pagination">{$page}</div>
+</div>
 
 	<div id="auditDiv" class="popDiv">
 		<form action="managearticle" method="post">
