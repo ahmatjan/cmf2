@@ -1,0 +1,275 @@
+body{
+    color: #333;
+    font-size: 13px;
+    font-family: "微软雅黑";
+}
+* {
+    margin: 0;
+    padding: 0;
+    text-decoration: none;
+    font-family:"微软雅黑";
+}
+div {
+    font-weight: normal;
+    overflow: hidden;
+    line-height: 24px;
+}
+a{
+    text-decoration: none;
+}
+table{
+    border-collapse: collapse;
+}
+a:hover {
+    color: #c00;
+}
+a:focus{
+    outline: none;
+}
+li{
+    list-style-type: none;
+}
+iframe{
+    border: 0px;
+    scroll: none;
+}
+.c{
+    clear: both;
+    height: 0px;
+    width: 0px;
+}
+#imgCode{
+    cursor: pointer;
+}
+#logForm{
+    width: 220px;
+    margin: 5px auto;
+}
+#logForm label{
+    width: 50px;
+    display: inline-block;
+    line-height: 28px;
+}
+#logForm input{
+    width: 160px;
+    height: 20px;
+    border: 1px solid #666;
+}
+#logForm input.short{
+    width: 100px;
+}
+#logForm input.button{
+    width: 50px;
+    cursor: pointer;
+    display: block;
+    margin: 5px auto;
+}
+#left{
+    background: url("../images/leftmenu_bg.gif") repeat scroll 0 0;
+    margin: 0px auto;
+    width: 280px;
+    float: left;
+    text-align: center;
+}
+
+#left>div{
+    padding: 8px 0px;
+    margin: 0px 20px;
+    width: 260px;
+    text-align: center;
+}
+#left>div>ul>li>a{
+    background: url("../images/menunewbg.gif") repeat-x scroll 0 0;
+    clear: both;
+    margin: 0 0 5px 12px;
+    width: 230px;
+    height: 25px;
+    line-height: 25px;
+    display: block;
+    color: #4d6c2f;
+}
+
+#left>div>ul>li li{
+    text-align: left;
+    text-indent: 20px;
+}
+
+#left>div>ul>li ul a{
+    color: #333;
+}
+
+#left>div>ul>li ul a:hover{
+    text-decoration: underline;
+}
+
+#right{
+    float: left;
+}
+
+#rightFrame{
+    width: 100%;
+    height: 100%;
+    border: 0;
+}
+
+.rightDiv{
+    width: 98%;
+    margin: 0px auto;
+}
+
+.rightDiv .title{
+    background: url(../images/tbg.gif) repeat-x;
+    height: 28px;
+    padding: 3px 3px 3px 10px;
+    border: 1px solid #cfcfcf;
+}
+
+.rightDiv table{
+    border-collapse: collapse;
+    margin: 10px auto;
+}
+
+.rightDiv table td, .rightDiv table th{
+    padding: 4px 6px;
+    border: 1px solid #cfcfcf;
+}
+
+.rightDiv table td a{
+    color: #666;
+}
+
+
+.rightDiv table td a:hover{
+    text-decoration: underline;
+}
+
+.rightDiv ul li{
+    border-bottom: 1px dashed #EEE;
+    line-height: 30px;
+}
+
+.rightDiv ul a{
+    display: block;
+    float: right;
+    margin-right: 10px;
+}
+
+.rightDiv .title input{
+    float: right;
+    display: block;
+    margin-right: 10px;
+    -moz-border-bottom-colors: none;
+    -moz-border-left-colors: none;
+    -moz-border-right-colors: none;
+    -moz-border-top-colors: none;
+    background: #cccccc url("../images/allbtbg2.gif") repeat scroll 0 0;
+    border-color: -moz-use-text-color #acacac #acacac -moz-use-text-color;
+    border-image: none;
+    border-style: none solid solid none;
+    border-width: medium 1px 1px medium;
+    cursor: pointer;
+    height: 24px;
+    padding: 2px 5px;
+}
+
+.rightDiv #tree li>a{
+    float: right;
+    margin-left: 10px;
+}
+
+.rightDiv a{
+    color: #666;
+}
+
+.rightDiv a:hover{
+    text-decoration: underline;
+}
+
+.rightDiv label{
+    display: inline-block;
+    width: 80px;
+    line-height: 30px;
+    vertical-align: top;
+}
+
+.popDiv label{
+    display: inline-block;
+    width: 100px;
+    line-height: 30px;
+    vertical-align: top;
+    text-indent: 10px;
+}
+
+.rightDiv .button, #auditSub{
+    -moz-border-bottom-colors: none;
+    -moz-border-left-colors: none;
+    -moz-border-right-colors: none;
+    -moz-border-top-colors: none;
+    background: #cccccc url("../images/allbtbg2.gif") repeat scroll 0 0;
+    border-color: -moz-use-text-color #acacac #acacac -moz-use-text-color;
+    border-image: none;
+    border-style: none solid solid none;
+    border-width: medium 1px 1px medium;
+    cursor: pointer;
+    display: inline-block;
+    height: 24px;
+    margin-right: 10px;
+    padding: 2px 5px;
+}
+
+#tree i{
+    display: inline-block;
+    width: 11px;
+    height: 20px;
+    margin-right: 2px;
+    vertical-align: middle;
+}
+#tree li a{
+    vertical-align: middle;
+}
+#tree li ul{
+    display: none;
+}
+#tree i.close{
+    background: url(../images/dedeexplode.gif) no-repeat center;
+    cursor: pointer;
+}
+#tree i.open{
+    background: url(../images/dedecontract.gif) no-repeat center;
+    cursor: pointer;
+}
+.popDiv{
+    display: none;
+    position: absolute;
+    z-index: 10;
+    background: #FAFAFA;
+    border: 1px solid #666;
+    box-shadow: 0px 0px 5px #333;
+    width: 400px;
+    min-height: 40px;
+}
+.popDiv .close{
+    position: absolute;
+    border: 1px solid #666;
+    border-radius: 10px;
+    width: 20px;
+    height: 20px;
+    right: 5px;
+    top: 5px;
+    text-align: center;
+    line-height: 20px;
+    cursor: pointer;
+}
+.popDiv ul span.comment{
+    display: block;
+    margin: 5px 5px 5px 140px;
+}
+
+.popDiv ul span.info{
+    display: inline-block; margin-left: 10px;
+}
+
+.popDiv ul span.info i{
+    display: inline-block;
+    margin: 0px 5px;
+}

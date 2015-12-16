@@ -16,7 +16,7 @@ function resizeWindow(){
 	var leftheight = $('#left').height();
 	$('#right').css('height',leftheight+'px');
 	var width = $(window).width();
-	$('#right').css('width', width - 280+ 'px');
+	$('#right').css('width',920+ 'px');
 }
 
 function changeVerify(){

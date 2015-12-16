@@ -31,17 +31,17 @@
 	<table class="gridtable">
 		<tr>
 			<th width="25">序号</th>
-			<th width="150">标题</th>
-			<th width="40">作者</th>
-			<th width="40">文章发布人</th>
+			<th width="300">标题</th>
+			<th width="70">作者</th>
+			<th width="70">文章发布人</th>
 			<th width="70">修改日期</th>
 			<th width="70">提交日期</th>
 			<th width="70">发布日期</th>
-			<th width="40">最后审核人</th>
+			<th width="70">最后审核人</th>
 			<th width="70">审核日期</th>
-			<th width="30">紧急重要度</th>
-			<th width="70">栏目</th>
-			<th width="70">可见用户组</th>
+			<th width="70">紧急重要度</th>
+			<th width="120">栏目</th>
+			<th width="150">可见用户组</th>
 			<th width="50">文章状态</th>
 			<th>操作</th>
 		</tr>
@@ -50,13 +50,13 @@
 				<td width="25" align="center">
 					{$vo['id']}
 				</td>
-				<td width="220" align="center">
+				<td width="300" align="center">
 					<a href="{$siteInfo['webFolder']}article/article?id={$vo['id']}" target="_blank">{$vo['title']}</a>
 				</td>
-				<td width="40" align="center">
+				<td width="70" align="center">
 					{$vo['author']}
 				</td>
-				<td width="40" align="center">
+				<td width="70" align="center">
 					{$userMapping[$vo['adder']]}
 				</td>
 				<td width="70" align="center">
@@ -68,16 +68,16 @@
 				<td width="70" align="center">
 					{$vo['publishtime']}
 				</td>
-				<td width="40" align="center">
+				<td width="70" align="center">
 					{$userMapping[$vo['auditor']]}
 				</td>
 				<td width="70" align="center">
 					{$vo['audittime']}
 				</td>
-				<td width="30" align="center">
+				<td width="70" align="center">
 					{$priorityMapping[$vo['priority']]}
 				</td>
-				<td width="70" align="center">
+				<td width="120">
 					<?php
 						$folders = $vo['folders'];
 						foreach($folders as $folder)
@@ -89,7 +89,7 @@
 						}
 					?>
 				</td>
-				<td width="70">
+				<td width="150">
 					<?php
 						$groups = $vo['groups'];
 						foreach($groups as $group)
@@ -101,7 +101,7 @@
 						}
 					?>
 				</td>
-				<td width="50" align="center">
+				<td width="70" align="center">
 					{$statusMapping[$vo['status']]}
 				</td>
 				<td width="110">
@@ -155,6 +155,10 @@
 						<option value="{$vo['id']}">{$vo['username']}</option>
 					</volist>
 				</select>
+			</div>
+			<div id="nextAuditNo">
+				<label for="contactno" id="contactNoLabel">审核人电话</label>
+				<input type="text" id="contactno" name="contactno">
 			</div>
 			<input type="hidden" id="artid" name="artid" />
 			<input type="hidden" id="audittype" name="audittype" />

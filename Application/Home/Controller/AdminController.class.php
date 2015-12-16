@@ -184,17 +184,21 @@ class AdminController extends Base {
 		$currentUser = $_SESSION['userInfo']['id'];
 		$articleID = I('post.artid');
 		$nextAuditor = I('post.auditor');
-
+		$contactNo = I('post.contactno');
 		$dao = D('ArticleAudit');
+		$title = $dao->table('tbl_article')->where(array('id'=>$articleID))->field('title')->find();
 
 		//是否将文章从编辑态转入审核态
 		if($_POST['audittype'] == 'true'){
+			//文章已经是审核态了，只是需要从一位审核人转入下一位审核人，或者退回编辑，或者审核后直接发布
 			$post = array();
 			$post['article'] = $articleID;
 			$post['auditor'] = $currentUser;
 			$post['comment'] = $_POST['comment'];
 			$post['addtime'] = $nowtime;
 			$post['modifytime'] = $nowtime;
+
+
 
 			//r1t为1，表示该审核人通过
 			if($_POST['rlt']){
@@ -205,15 +209,22 @@ class AdminController extends Base {
 				//判断是否还需要下一位审核人
 				if(empty($nextAuditor)){
 					//审核文章通过，并且不需要下一个审核人，文章转入发表状态
-					$dao->table('tbl_article')->where(array('id' => $articleID))->save(array('audittime' =>$nowtime));
-					$dao->table('tbl_article')->where(array('id' => $articleID))->save(array('status' => 3));
+					$saveData = array();
+					$saveData['publishtime'] = date('Y-m-d H:i:s');
+					$saveData['audittime'] = date('Y-m-d H:i:s');
+					$saveData['status'] = 3;
+
+					$dao->table('tbl_article')->where(array('id' => $articleID))->save($saveData);
+
 				}else{
 					//审核文章通过，需要下一个审核人，添加下一位审核人信息
 					$post['auditor'] = $nextAuditor;
 					$post['status'] = 0;
 					$post['comment'] = '';
-					$dao->add($post);
+					//给下一位审核人发送通知短信
+					$this->sendsms($contactNo,$title);
 
+					$dao->add($post);
 					//更新文章下一个审核人信息
 					$dao->table('tbl_article')->where(array('id' => $articleID))->save(array('auditor' => $nextAuditor));
 					$dao->table('tbl_article')->where(array('id' => $articleID))->save(array('audittime' => $nowtime));
@@ -231,6 +242,7 @@ class AdminController extends Base {
 			//文章首次提交给审核人，文章状态由编辑状态转入审核状态。
 
 			//添加审核记录
+			$this->sendsms($contactNo,$title);
 			$dao->add(array('article' => $articleID, 'auditor' => $nextAuditor, 'addtime' => $nowtime, 'status' => 0));
 			//$dao->table('tbl_article')->where(array('id' => $articleID))->save(array('status' => 2));
 			//$dao->table('tbl_article')->where(array('id' => $articleID))->save(array('auditor' => $nextAuditor));
@@ -681,7 +693,6 @@ class AdminController extends Base {
 	}
 	//////////////////////////////////////////////////////////////////////////////////////用户权限相关函数///////////////////////////////////////////////
 
-
 	//列出所有系统管理员
 	public function adminList(){
 		$this->assign('jsFiles', array('admin/user.js'));
@@ -873,5 +884,25 @@ class AdminController extends Base {
 	}
 
 	///////////////////////////////////////////////////////////////////用户相关函数//////////////////////////////////////////////////////////////
+
+	private function sendsms($contactNo,$title){
+		if (!empty($contactNo)){
+			$titleResult = '';
+			if ($title.count()>0)
+				$titleResult = $title[0];
+			$ch = curl_init();
+			curl_setopt($ch, CURLOPT_URL, "http://sms-api.luosimao.com/v1/send.json");
+			curl_setopt($ch, CURLOPT_HTTP_VERSION  , CURL_HTTP_VERSION_1_0 );
+			curl_setopt($ch, CURLOPT_CONNECTTIMEOUT, 30);
+			curl_setopt($ch, CURLOPT_RETURNTRANSFER, TRUE);
+			curl_setopt($ch, CURLOPT_HEADER, FALSE);
+			curl_setopt($ch, CURLOPT_HTTPAUTH , CURLAUTH_BASIC);
+			curl_setopt($ch, CURLOPT_USERPWD  , 'api:key-3a5ecb10762d2c45776322a8f4761120');
+			curl_setopt($ch, CURLOPT_POST, TRUE);
+			curl_setopt($ch, CURLOPT_POSTFIELDS, array('mobile' => $contactNo,'message' => '您有一篇新文章《'.$titleResult.'》需要审核。【交流合作中心】'));
+			$res = curl_exec( $ch );
+			curl_close( $ch );
+		}
+	}
 
 }

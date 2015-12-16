@@ -16,7 +16,6 @@
     <img src="{$siteInfo['webFolder']}static/images/top1.jpg" width="1200" height="147" border="0">
 </div>
 
-
 <div class="searchbox">
     <div class="searchZone clearfix">
         <form action="{$siteInfo['webFolder']}article/advSearch" target="rightFrame">
@@ -49,42 +48,45 @@
     $userid = $_SESSION['userInfo']['id'];
     $username = $_SESSION['userInfo']['username'];
 ?>
-<div id="left" >
-    <div class="sidebar fleft">
-        <ul>
-            <li>
-                <if condition="$username neq ''">
-                    <div class="title">您好，{$username} &nbsp;&nbsp;</div>
-                    <ul class="menu">
-                        <li> <a href="{$siteInfo['webFolder']}user/logout">退出登录</a></li>
-                        <li> <a href="{$siteInfo['webFolder']}user/modify">修改信息</a></li>
-                    </ul>
-                <else/>
-                    <div class="title">您好，游客 &nbsp;&nbsp;</div>
-                    <br>
-                    <ul class="menu">
-                        <form method="post" action="{$siteInfo['webFolder']}user/doLogin">
-                            <label for="username">用户名:</label>
-                            <input type="text" id="username" name="username"> <br>
-                            <label for="password">密码:&nbsp;&nbsp;&nbsp;</label>
-                            <input type="password" id="password" name="password"> <br>
-                            <input type="submit" name="登录">
-                        </form>
-                        <li> <a href="{$siteInfo['webFolder']}user/reg">注册用户</a></li>
-                    </ul>
-                </if>
-            </li>
-            <li>
-                <div class="title">文章栏目</div>
-                <ul id="articleTree" class="ztree"></ul>
-            </li>
-            <br>
-        </ul>
+<div style="width:1220px;margin:0 auto;">
+    <div id="left">
+        <div class="sidebar">
+            <ul>
+                <li>
+                    <if condition="$username neq ''">
+                        <div class="title">您好，{$username} &nbsp;&nbsp;</div>
+                        <ul class="menu">
+                            <li> <a href="{$siteInfo['webFolder']}user/logout">退出登录</a></li>
+                            <li> <a href="{$siteInfo['webFolder']}user/modify">修改信息</a></li>
+                        </ul>
+                    <else/>
+                        <div class="title">您好，游客 &nbsp;&nbsp;</div>
+                        <br>
+                        <ul class="menu">
+                            <form method="post" action="{$siteInfo['webFolder']}user/doLogin">
+                                <label for="username">用户名:</label>
+                                <input type="text" id="username" name="username"> <br>
+                                <label for="password">密码:&nbsp;&nbsp;&nbsp;</label>
+                                <input type="password" id="password" name="password"> <br>
+                                <input type="submit" name="登录">
+                            </form>
+                            <li> <a href="{$siteInfo['webFolder']}user/reg">注册用户</a></li>
+                        </ul>
+                    </if>
+                </li>
+                <li>
+                    <div class="title">文章栏目</div>
+                    <ul id="articleTree" class="ztree"></ul>
+                </li>
+                <br>
+            </ul>
+        </div>
     </div>
-</div>
-<div id="right" class="rightDiv">
-    <iframe  src="{$siteInfo['webFolder']}article/folder" scrolling="none" id="rightFrame" name="rightFrame">
-    </iframe>
+
+    <div id="right" class="rightDiv">
+        <iframe  src="{$siteInfo['webFolder']}article/folder" scrolling="none" id="rightFrame" name="rightFrame">
+        </iframe>
+    </div>
 </div>
 
 <include file="Public/indexfooter" />
